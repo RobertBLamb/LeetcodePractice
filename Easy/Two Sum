@@ -1,0 +1,16 @@
+class Solution(object):
+    def twoSum(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        # Key: Value
+        # num: index
+        options = {}
+        for i in range(len(nums)):
+            if nums[i] in options:
+                return [options[nums[i]], i]
+            else:
+                options[target - nums[i]] = i
+        
