@@ -1,0 +1,14 @@
+class Solution(object):
+    def maximumWealth(self, accounts):
+        """
+        :type accounts: List[List[int]]
+        :rtype: int
+        """
+        richest = 0
+        
+        for arr in accounts:
+            if sum(arr) > richest:
+                richest = sum(arr)
+                
+        return richest
+                
