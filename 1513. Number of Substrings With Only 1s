@@ -1,0 +1,17 @@
+class Solution(object):
+    def numSub(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        total, streak = 0, 0
+        
+        for i in s:
+            if i == '0':
+                streak = 0
+                
+            elif i == '1':
+                streak += 1
+                total += streak
+        
+        return total % (10**9+7)
