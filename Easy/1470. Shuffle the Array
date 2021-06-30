@@ -1,0 +1,18 @@
+class Solution(object):
+    def shuffle(self, nums, n):
+        """
+        :type nums: List[int]
+        :type n: int
+        :rtype: List[int]
+        """
+        arr = [None] * len(nums)
+        for i in range(n * 2):
+            
+            if i < n: # first half
+                arr[i * 2] = nums[i]
+            else:   # odd
+                arr[i - (len(nums) - (i + 1))] = nums[i]
+        return arr
+                
+            
+        
