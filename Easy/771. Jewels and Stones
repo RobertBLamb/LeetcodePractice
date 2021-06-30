@@ -1,0 +1,18 @@
+class Solution(object):
+    def numJewelsInStones(self, jewels, stones):
+        """
+        :type jewels: str
+        :type stones: str
+        :rtype: int
+        """
+        jewel = set()
+        total = 0
+        
+        for char in jewels:
+            jewel.add(char)
+        
+        for rock in stones:
+            if rock in jewel:
+                total += 1
+                
+        return total
