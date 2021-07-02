@@ -1,0 +1,16 @@
+class Solution(object):
+    def fib(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+            
+        return self.helper(n, {0: 0, 1: 1})
+    
+    
+    def helper(self, n, memo):
+        if n not in memo:
+            fib1 = self.helper(n-1, memo)
+            fib2 = self.helper(n-2, memo)
+            memo[n] = fib1 + fib2
+        return memo[n]
