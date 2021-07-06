@@ -1,0 +1,29 @@
+class Solution(object):
+    def canReach(self, arr, start):
+        """
+        :type arr: List[int]
+        :type start: int
+        :rtype: bool
+        """
+        
+        queue = [start]
+        
+        visited = [False] * len(arr)
+        
+        while queue:
+            node = queue.pop(0)
+            
+            if arr[node] == 0:
+                return True
+            
+            if visited[node]:
+                continue  
+            visited[node] = True
+            
+            if node + arr[node] < len(arr):
+                queue.append(node + arr[node])
+            if node - arr[node] >= 0:
+                queue.append(node - arr[node])
+                
+        return False
+        
