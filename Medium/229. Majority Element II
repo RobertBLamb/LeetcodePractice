@@ -1,0 +1,17 @@
+class Solution(object):
+    def majorityElement(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[int]
+        """
+        ele = {}
+        third = len(nums)/3
+        arr = set()
+        for i in nums:
+            if i in ele:
+                ele[i]+=1
+            else:
+                ele[i] = 1
+            if ele[i] > third:
+                arr.add(i)
+        return list(arr)
