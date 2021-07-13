@@ -1,0 +1,27 @@
+class Solution(object):
+    def convert(self, s, numRows):
+        """
+        :type s: str
+        :type numRows: int
+        :rtype: str
+        """
+        
+        if len(s) == 1 or numRows >= len(s):
+            return s
+        
+        ans = [[] for _ in range(numRows)]
+        row = 0
+        direction = -1
+        
+        for letter in s:
+            ans[row].append(letter)
+            if row == 0 or row == (numRows - 1):
+                direction *= -1
+            row += direction
+        
+        for i in range(len(ans)):
+            ans[i] = ''.join(ans[i])
+        
+        return ''.join(ans)
+            
+        
