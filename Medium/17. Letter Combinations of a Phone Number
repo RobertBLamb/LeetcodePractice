@@ -1,0 +1,26 @@
+class Solution(object):
+    def letterCombinations(self, digits):
+        """
+        :type digits: str
+        :rtype: List[str]
+        """
+        
+        if digits is None or len(digits) == 0:
+            return []
+        
+        ans = []
+        mappings = ['0', '1', 'abc', 'def', 'ghi', 'jkl', 'mno', 'pqrs', 'tuv', 'wxyz']
+        
+        
+        self.combinations(ans, digits, '', 0, mappings)
+        return ans
+        
+    def combinations(self, ans, digits, cur_str, index, mappings):
+        if index == len(digits):
+            ans.append(cur_str)
+            return
+        
+        letters = mappings[int(digits[index])]
+        
+        for i in range(len(letters)):
+            self.combinations(ans, digits, cur_str + letters[i], index + 1, mappings)
