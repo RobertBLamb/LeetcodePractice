@@ -1,0 +1,30 @@
+# brute force
+
+class Solution(object):
+    def missingNumber(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        n = set()
+        for i in range(len(nums) + 1):
+            n.add(i)
+        
+        for i in range(len(nums)):
+            n.remove(nums[i])
+        
+        return n.pop()
+        
+ # sorting
+  class Solution(object):
+    def missingNumber(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        nums.sort()
+        
+        for i in range(len(nums)):
+            if i != nums[i]:
+                return i
+        return len(nums)
