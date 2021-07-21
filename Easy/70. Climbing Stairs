@@ -1,0 +1,22 @@
+class Solution(object):
+    def climbStairs(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        memo = [None] * (n + 1)
+        return self.helper(memo, n)
+               
+        
+    def helper(self, memo, n):
+        
+        if n < 0:
+            return 0
+        if n is 0 or n is 1:
+            return 1
+        
+        if memo[n]:
+            return memo[n]
+        
+        memo[n] = self.helper(memo, n-1) + self.helper(memo, n-2)
+        return memo[n]
