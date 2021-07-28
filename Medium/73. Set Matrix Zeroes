@@ -1,0 +1,25 @@
+        rows = set()
+        cols = set()
+        
+        for i in range(len(matrix)):
+            for j in range(len(matrix[i])):
+                if matrix[i][j] == 0:
+                    rows.add(i)
+                    cols.add(j)
+           
+        for row in rows:
+            self.row_helper(matrix, row)
+        
+        for col in cols:
+            self.col_helper(matrix, col)
+        
+    def row_helper(self, matrix, row):
+        for i in range(len(matrix[0])):
+            matrix[row][i] = 0
+            
+    def col_helper(self, matrix, col):
+        for i in range(len(matrix)):
+            matrix[i][col] = 0
+ 
+
+            
