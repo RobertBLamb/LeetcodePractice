@@ -1,0 +1,21 @@
+class Solution(object):
+    def rotate(self, matrix):
+        """
+        :type matrix: List[List[int]]
+        :rtype: None Do not return anything, modify matrix in-place instead.
+        """
+        size = len(matrix)
+        
+        for layer in range(size/2):
+            start = layer
+            end = size - 1 - layer
+            
+            for i in range(start, end):
+                offset = i - start
+                top = matrix[start][i]
+                
+                matrix[start][i] = matrix[end - offset][start]
+                matrix[end - offset][start] = matrix[end][end - offset]
+                matrix[end][end - offset] = matrix[i][end]
+                matrix[i][end] = top
+        return matrix
