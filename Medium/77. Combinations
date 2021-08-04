@@ -1,0 +1,12 @@
+class Solution(object):
+    def combine(self, n, k):
+        ans = []
+        self.dfs(list(range(1, n+1)), k, [], ans)
+        return ans
+    
+    def dfs(self, nums, k, path, ans):
+        if len(path) == k:
+            ans.append(path)
+            return 
+        for i in range(len(nums)):
+            self.dfs(nums[i+1:], k, path+[nums[i]], ans)
