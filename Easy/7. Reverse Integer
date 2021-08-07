@@ -1,0 +1,19 @@
+class Solution:
+    def reverse(self, x: int) -> int:
+        
+        pos = True
+        
+        if x < 0:
+            x = abs(x)
+            pos = False
+        x = str(x)
+        x = list(x)
+        x.reverse()
+        x = ''.join(x)
+        x = int(x)
+        
+        if not pos:
+            x *= -1
+        if abs(x) > 2**31:
+            return 0
+        return x
