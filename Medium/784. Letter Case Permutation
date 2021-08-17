@@ -1,0 +1,19 @@
+class Solution:
+    def letterCasePermutation(self, s: str) -> List[str]:
+        s = list(s)
+        ans = []
+        self.helper(ans, 0, s)
+        
+        return ans
+    
+    def helper(self, ans, index, s):
+        if index == len(s):
+            ans.append(''.join(s.copy()))
+        else:
+            if s[index].isalpha():
+                s[index] = s[index].upper()
+                self.helper(ans, index + 1, s)
+                s[index] = s[index].lower()
+                self.helper(ans, index + 1, s)
+            else:
+                self.helper(ans, index + 1, s)
