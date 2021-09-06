@@ -1,0 +1,26 @@
+class Solution(object):
+    def generateParenthesis(self, n):
+        """
+        :type n: int
+        :rtype: List[str]
+        """
+        ans = []
+
+        
+        def helper(arr, left, right):
+            if len(arr) == n * 2:
+                ans.append("".join(arr))
+                return
+            if left < n:
+                arr.append('(')
+                helper(arr, left + 1, right)
+                arr.pop()
+            if right < left:
+                arr.append(')')
+                helper(arr, left, right + 1)
+                arr.pop()
+                
+            
+        helper([], 0 , 0)
+        
+        return ans
