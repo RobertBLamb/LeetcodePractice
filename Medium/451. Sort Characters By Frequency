@@ -1,0 +1,23 @@
+class Solution(object):
+    def frequencySort(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        n = len(s)
+        
+        letter_count = {}
+        
+        for i in range(n):
+            if s[i] in letter_count:
+                letter_count[s[i]] += 1
+            else:
+                letter_count[s[i]] = 1
+        
+        
+        ordered_string = ''
+        
+        for key, value in sorted(letter_count.items(), key=lambda x: -x[1]):
+            ordered_string += key * value
+        
+        return ordered_string
