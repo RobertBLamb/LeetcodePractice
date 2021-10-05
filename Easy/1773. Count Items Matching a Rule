@@ -1,0 +1,23 @@
+class Solution(object):
+    def countMatches(self, items, ruleKey, ruleValue):
+        """
+        :type items: List[List[str]]
+        :type ruleKey: str
+        :type ruleValue: str
+        :rtype: int
+        """
+        
+        rule_index = -1
+        ans = 0
+        
+        if ruleKey == 'type':
+            rule_index = 0
+        elif ruleKey == 'color':
+            rule_index = 1
+        else:   # should be name
+            rule_index = 2
+        
+        for i in range(len(items)):
+            if items[i][rule_index] == ruleValue:
+                ans += 1
+        return ans
