@@ -1,0 +1,28 @@
+# brute force
+
+class Solution(object):
+    def reverseWords(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        left = 0
+        s = list(s)
+
+        for i in range(len(s)):
+            if s[i] == ' ':
+                reverse(s, left, i - 1)
+                left = i + 1
+        
+        reverse(s, left, len(s) - 1)
+        return ''.join(s)
+    
+    def reverse(self, s, left, right):
+        while left < right:
+            temp = s[left]
+            s[left] = s[right]
+            s[right] = temp
+            left += 1
+            right -= 1
+    
+    
