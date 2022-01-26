@@ -1,0 +1,30 @@
+class Solution(object):
+    def floodFill(self, image, sr, sc, newColor):
+        """
+        :type image: List[List[int]]
+        :type sr: int
+        :type sc: int
+        :type newColor: int
+        :rtype: List[List[int]]
+        """
+        # prevents infinite loops
+        if image[sr][sc] == newColor:
+            return image
+        
+        # color that will get changed
+        colorToChange = image[sr][sc]
+        
+        # dfs
+        def dfs(row, col):    
+            if row >= 0 and col >= 0 and row < len(image) and col < len(image[0]):
+
+                if image[row][col] == colorToChange:
+                    image[row][col] = newColor  
+                    dfs(row - 1, col)
+                    dfs(row + 1, col)
+                    dfs(row, col - 1)
+                    dfs(row, col + 1)
+        
+        dfs(sr, sc)
+
+        return image
