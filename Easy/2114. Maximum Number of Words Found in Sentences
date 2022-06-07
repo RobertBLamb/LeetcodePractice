@@ -1,0 +1,12 @@
+class Solution(object):
+    def mostWordsFound(self, sentences):
+        """
+        :type sentences: List[str]
+        :rtype: int
+        """
+        ans = 0
+        
+        for phrase in sentences:
+            temp = len(phrase.split(' '))
+            ans = max(ans, temp)
+        return ans
