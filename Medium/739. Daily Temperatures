@@ -1,0 +1,18 @@
+class Solution(object):
+    def dailyTemperatures(self, temperatures):
+        """
+        :type temperatures: List[int]
+        :rtype: List[int]
+        """
+        
+        stack = []
+        ans = [0] * len(temperatures)
+        
+        for index, temp in enumerate(temperatures):
+            while stack and temp > stack[-1][1]:
+                sIndex, sTemp = stack.pop()
+                ans[sIndex] = index - sIndex
+            stack.append([index, temp])
+        return ans
+            
+            
