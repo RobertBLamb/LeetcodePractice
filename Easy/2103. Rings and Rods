@@ -1,0 +1,17 @@
+class Solution(object):
+    def countPoints(self, rings):
+        """
+        :type rings: str
+        :rtype: int
+        """
+        ans = 0 
+        arr = [''] * 10
+
+        for i in range(len(rings) / 2):
+            if rings[i * 2] not in arr[int(rings[(i * 2) + 1])]:
+                arr[int(rings[(i * 2) + 1])] += rings[i * 2]
+        
+        for colors in arr:
+            if len(colors) == 3:
+                ans += 1
+        return ans
