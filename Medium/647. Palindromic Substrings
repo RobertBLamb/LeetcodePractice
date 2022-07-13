@@ -1,0 +1,25 @@
+class Solution(object):
+    def countSubstrings(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+
+        ans = 0     
+        
+        for i in range(len(s)):
+            ans += self.helper(s, i,i)
+            ans += self.helper(s, i, i + 1)
+        
+        return ans
+    
+    def helper(self, s, left, right):
+        
+        res = 0
+        
+        while left >= 0 and right < len(s) and s[left] == s[right]:
+            left -= 1
+            right += 1
+            res += 1
+            
+        return res
