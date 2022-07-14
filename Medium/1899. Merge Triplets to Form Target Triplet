@@ -1,0 +1,22 @@
+class Solution(object):
+    def mergeTriplets(self, triplets, target):
+        """
+        :type triplets: List[List[int]]
+        :type target: List[int]
+        :rtype: bool
+        """
+        match = set()
+        for a, b, c in triplets:
+            if a > target[0] or b > target[1] or c > target[2]:
+                continue
+            
+            if a == target[0]:
+                match.add(0)
+            if b == target[1]:
+                match.add(1)
+            if c == target[2]:
+                match.add(2)
+                
+        return len(match) == 3
+            
+                
