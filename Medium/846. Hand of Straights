@@ -1,0 +1,29 @@
+class Solution(object):
+    def isNStraightHand(self, hand, groupSize):
+        """
+        :type hand: List[int]
+        :type groupSize: int
+        :rtype: bool
+        """
+        
+        if len(hand) % groupSize == 0:
+            cards = {}
+            
+            for card in hand:
+                cards[card] = cards.get(card, 0) + 1 
+            
+            while cards:
+                card = min(cards.keys())
+                
+                for i in range(groupSize):
+                    curCard = card + i
+                    
+                    if curCard in cards:
+                        cards[curCard] -= 1
+                        
+                        if cards[curCard] == 0:
+                            del cards[curCard]
+                    else:
+                        return False
+                  
+            return True
