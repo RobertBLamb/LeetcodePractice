@@ -1,0 +1,23 @@
+class Solution:
+    def maxStarSum(self, vals: List[int], edges: List[List[int]], k: int) -> int:
+        if k == 0:
+            return max(vals)
+
+        # graph setup
+        graph = defaultdict(list)
+        for edge in edges:
+            a, b = edge[0], edge[1]
+            
+            if vals[b] > 0:
+                graph[a].append(vals[b])
+            
+            if vals[a] > 0:
+                graph[b].append(vals[a])
+
+        # k is the maximum num of connect edges
+        max_val = max(vals)
+        for node, edge in graph.items():
+            # initialize center of star graph
+            cur_val = vals[node] + sum(sorted(edge, reverse=True)[:k])
+            max_val = max(max_val, cur_val)
+        return max_val
