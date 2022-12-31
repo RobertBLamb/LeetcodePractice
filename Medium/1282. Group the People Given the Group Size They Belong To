@@ -1,0 +1,24 @@
+# Brute force
+class Solution:
+    def groupThePeople(self, groupSizes: List[int]) -> List[List[int]]:
+
+        groups = defaultdict(list)
+
+        for index, val in enumerate(groupSizes):
+            groups[val].append(index)
+        
+        ans = [[]]
+        print(groups)
+        index = 0
+        while groups:
+            key = min(groups.keys())
+            vals = groups[key]
+
+            for val in vals:
+                ans[-1].append(val)
+
+                if len(ans[-1]) >= key:
+                    ans.append([])
+
+            del groups[key]
+        return ans[:-1]
