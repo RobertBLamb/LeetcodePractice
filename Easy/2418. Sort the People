@@ -1,0 +1,37 @@
+
+# bubble sort
+class Solution:
+    def sortPeople(self, names: List[str], heights: List[int]) -> List[str]:
+
+        for i in range(len(heights) - 1):
+
+            for j in range(i, len(heights)):
+
+                if heights[i] < heights[j]:
+                    temp = heights[i]
+                    heights[i] = heights[j]
+                    heights[j] = temp
+
+                    temp = names[i]
+                    names[i] = names[j]
+                    names[j] = temp
+
+        return names
+        
+
+# built in sort
+class Solution:
+    def sortPeople(self, names: List[str], heights: List[int]) -> List[str]:
+
+        temp = []
+
+        for i in range(len(heights)):
+            temp.append([heights[i], names[i]])
+        
+        temp = sorted(temp, reverse=True)
+        
+        ans = []
+        for _, name in temp:
+            ans.append(name)
+
+        return ans
