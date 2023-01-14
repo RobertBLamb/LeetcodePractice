@@ -1,0 +1,16 @@
+class Solution:
+    def maximumUnits(self, boxTypes: List[List[int]], truckSize: int) -> int:
+
+        ans = 0
+        boxTypes = (sorted(boxTypes, key=lambda x: x[1]))
+
+        for _ in range(len(boxTypes)):
+
+            if boxTypes[-1][0]<=truckSize:
+                truckSize -= boxTypes[-1][0]
+                ans += boxTypes[-1][0] * boxTypes[-1][1]
+                boxTypes.pop()
+            else:
+                ans += truckSize * boxTypes[-1][1]
+                return ans
+        return ans
