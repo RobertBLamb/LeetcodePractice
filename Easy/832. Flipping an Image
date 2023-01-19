@@ -1,0 +1,11 @@
+class Solution:
+    def flipAndInvertImage(self, image: List[List[int]]) -> List[List[int]]:
+        
+        matrix = [[0] * len(image) for _ in range(len(image))]
+        size = len(image)
+
+        for i in range(size):
+            for j in range(size):
+                if image[i][j] == 0:
+                    matrix[i][size - (j + 1)] = 1
+        return matrix
