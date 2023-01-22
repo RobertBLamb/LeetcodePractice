@@ -1,0 +1,18 @@
+class Solution:
+    def decodeMessage(self, key: str, message: str) -> str:
+        cipher = {' ': ' '}
+        # is the num value of A
+        letter = 97
+
+        # sets up the cipher
+        for char in key:
+            if char.isalpha() and char not in cipher:
+                cipher[char] = chr(letter)
+                letter += 1
+        
+        meaning = ""
+
+        for char in message:
+            meaning += cipher[char]
+            
+        return meaning
