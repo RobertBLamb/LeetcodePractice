@@ -1,0 +1,17 @@
+class Solution:
+    def sortSentence(self, s: str) -> str:
+
+        s = s.split(' ')
+        order = {}
+
+        for word in s:
+            order[int(word[-1:])] = word[:-1]
+        
+        ans = ''
+        index = 1
+        while order:
+            ans += order[index] + ' '
+            del order[index]
+            index += 1
+        
+        return ans[:-1]
