@@ -1,0 +1,10 @@
+class Solution:
+    def destCity(self, paths: List[List[str]]) -> str:
+
+        cityStart = set()
+        cityEnd = set()
+
+        for cityA, cityB in paths:
+            cityStart.add(cityA)
+            cityEnd.add(cityB)
+        return cityEnd.difference(cityStart).pop()
