@@ -1,0 +1,16 @@
+class Solution:
+    def uniqueMorseRepresentations(self, words: List[str]) -> int:
+        morse_dict = [".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."]
+
+        # subtract 97 from char to get loc in arr
+        unique_codes = set()
+
+        for word in words:
+
+            code = ''
+            for char in word:
+                code += morse_dict[ord(char) - 97]
+           
+            unique_codes.add(code)
+        
+        return len(unique_codes)
