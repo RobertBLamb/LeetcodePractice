@@ -1,0 +1,21 @@
+class Solution:
+    def countConsistentStrings(self, allowed: str, words: List[str]) -> int:
+        
+        ans = 0
+        legal_char = set()
+
+        for char in allowed:
+            legal_char.add(char)
+        
+        for word in words:
+            good = True
+
+            for char in word:
+                if char not in legal_char:
+                    good = False
+                    break
+            
+            if good:
+                ans += 1
+        
+        return ans
