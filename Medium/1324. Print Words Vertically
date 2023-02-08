@@ -1,0 +1,16 @@
+class Solution:
+    def printVertically(self, s: str) -> List[str]:
+        words = s.split(' ')
+
+        n = len(max(words, key = len))
+        ans = [''] * n
+        for i in range(n):
+            for word in words:
+                if i < len(word):
+                    ans[i] += word[i]
+                else:
+                    ans[i] += ' '
+        for i in range(len(ans)):
+            ans[i] = ans[i].rstrip()
+        
+        return ans
