@@ -1,0 +1,14 @@
+class Solution:
+    def garbageCollection(self, garbage: List[str], travel: List[int]) -> int:
+        ans = 0
+        seen = set()
+
+        for i in range(len(garbage) - 1, -1, -1):
+            
+            ans += len(garbage[i])
+            
+            for char in garbage[i]:
+                seen.add(char)
+            if i != 0:
+                ans += len(seen) * travel[i - 1]
+        return ans
