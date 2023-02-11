@@ -1,0 +1,11 @@
+class Solution:
+    def squareIsWhite(self, coordinates: str) -> bool:
+
+        if ord(coordinates[0]) % 2 == 1:
+            if ord(coordinates[1]) % 2 == 1:
+                return False
+            return True
+        else:
+            if ord(coordinates[1]) % 2 == 1:
+                return True
+            return False
