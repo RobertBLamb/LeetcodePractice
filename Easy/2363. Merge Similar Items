@@ -1,0 +1,19 @@
+class Solution:
+    def mergeSimilarItems(self, items1: List[List[int]], items2: List[List[int]]) -> List[List[int]]:
+
+        # if the first character is the same merge and add the weights
+
+        pairs1 = {}
+
+        for val, weight in items1:
+            pairs1[val] = weight
+        
+        for i in range(len(items2)):
+            if items2[i][0] in pairs1:
+                items2[i][1] += pairs1[items2[i][0]]
+                del pairs1[items2[i][0]]
+        
+        for key in pairs1:
+            items2.append([key, pairs1[key]])
+        
+        return sorted(items2)
