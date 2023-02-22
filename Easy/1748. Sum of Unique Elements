@@ -1,0 +1,15 @@
+class Solution:
+    def sumOfUnique(self, nums: List[int]) -> int:
+
+        count = {}
+
+        for num in nums:
+            count[num] = count.get(num, 0) + 1
+
+        ans = 0
+
+        for key in count:
+            if count[key] == 1:
+                ans += key
+        
+        return ans
