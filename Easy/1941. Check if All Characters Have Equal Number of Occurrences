@@ -1,0 +1,10 @@
+class Solution:
+    def areOccurrencesEqual(self, s: str) -> bool:
+        count = {}
+
+        for char in s:
+            count[char] = count.get(char, 0) + 1
+        
+        unique = set(count.values())
+        
+        return len(unique) == 1
