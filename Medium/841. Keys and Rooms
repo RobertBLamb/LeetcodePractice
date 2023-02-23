@@ -1,0 +1,15 @@
+class Solution:
+    def canVisitAllRooms(self, rooms: List[List[int]]) -> bool:
+        visited = set()
+        visited.add(0)
+        queue = [rooms[0]]
+
+        while queue:
+            arr = queue.pop()
+            
+            for node in arr:
+                if node not in visited:
+                    queue.append(rooms[node])
+                    visited.add(node)
+
+        return len(visited) == len(rooms)
