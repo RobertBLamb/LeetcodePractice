@@ -1,0 +1,28 @@
+class Solution:
+    def numUniqueEmails(self, emails: List[str]) -> int:
+        # + removes all after characters
+        # . in the local name get removed
+
+        email_list = set()
+
+        for word in emails:
+            word = self.true_email(word)
+            email_list.add(word)
+        return len(email_list)
+    
+
+    def true_email(self, email):
+        temp = ""
+
+        for i in range(len(email)):
+            if email[i] == "@":
+                temp += email[i:]
+                break
+            elif email[i] == "+":
+                while email[i] != "@":
+                    i += 1
+                temp += email[i:]
+                break
+            elif email[i] != ".":
+                temp += email[i]
+        return temp
