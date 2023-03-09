@@ -1,0 +1,22 @@
+class Solution:
+    def countStudents(self, students: List[int], sandwiches: List[int]) -> int:
+
+        line_size = len(sandwiches)
+        sandwiches_skiped = 0
+
+        while line_size > 0:
+            student = students.pop(0)
+
+            if student == sandwiches[0]:
+                sandwiches.pop(0)
+                line_size -= 1
+                sandwiches_skiped = 0
+            else:
+                sandwiches_skiped += 1
+
+                if sandwiches_skiped >= line_size:
+                    return line_size
+
+                students.append(student)
+        
+        return 0
