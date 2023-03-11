@@ -1,0 +1,12 @@
+class Solution:
+    def uniqueOccurrences(self, arr: List[int]) -> bool:
+
+        count = Counter(arr)
+        
+        frequencies = set()
+
+        for val in count.values():
+            if val in frequencies:
+                return False
+            frequencies.add(val)
+        return True
