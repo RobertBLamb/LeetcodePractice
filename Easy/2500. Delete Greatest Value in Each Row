@@ -1,0 +1,15 @@
+class Solution:
+    def deleteGreatestValue(self, grid: List[List[int]]) -> int:
+
+        ans = 0
+
+        for i in range(len(grid)):
+            grid[i].sort(reverse=True)
+        
+        for i in range(len(grid[0])):
+            cur_max = 0
+            for j in range(len(grid)):
+                cur_max = max(cur_max, grid[j][i])
+            ans += cur_max
+        
+        return ans
