@@ -7,7 +7,6 @@ public:
         {
             if(seen.find(nums[i])!=seen.end())
             {
-                cout << seen[nums[i]] << " " << i;
                 return {seen[nums[i]], i};
             }
 
