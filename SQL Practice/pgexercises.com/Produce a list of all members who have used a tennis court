@@ -1,0 +1,8 @@
+SELECT DISTINCT mem.firstname || ' ' || mem.surname as member, fac.name as facility
+FROM cd.members mem
+JOIN cd.bookings book
+	ON mem.memid = book.memid
+JOIN cd.facilities fac
+	ON fac.facid = book.facid
+WHERE fac.name LIKE '%Tennis Court%'
+ORDER BY member, facility;
