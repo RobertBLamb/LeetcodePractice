@@ -1,0 +1,4 @@
+SELECT facid, EXTRACT(month from starttime) as month, SUM(slots)
+FROM cd.bookings
+WHERE EXTRACT(year from starttime) = 2012
+GROUP BY facid, month;
