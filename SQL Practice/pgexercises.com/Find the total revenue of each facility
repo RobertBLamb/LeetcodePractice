@@ -1,0 +1,12 @@
+SELECT 
+	name, 
+	SUM(slots * 
+			CASE
+			WHEN memid = 0 THEN guestcost
+			ELSE membercost
+		END) AS "revenue"
+FROM cd.facilities facs
+	INNER JOIN cd.bookings book
+	ON book.facid = facs.facid
+GROUP BY facs.name
+ORDER BY revenue;
