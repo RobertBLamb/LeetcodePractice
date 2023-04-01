@@ -1,0 +1,15 @@
+SELECT name,
+		SUM(book.slots *
+				CASE
+					WHEN book.memid = 0 THEN fac.guestcost
+					ELSE fac.membercost
+				END) as "revenue"
+FROM cd.bookings book
+INNER JOIN cd.facilities fac
+	ON fac.facid = book.facid
+GROUP BY fac.name	
+HAVING sum(case 
+		when memid = 0 then slots * fac.guestcost
+		else slots * membercost
+	end) < 1000
+ORDER BY revenue ASC
