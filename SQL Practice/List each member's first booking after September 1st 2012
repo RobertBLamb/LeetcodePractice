@@ -1,0 +1,7 @@
+SELECT mem.surname, mem.firstname, mem.memid, min(book.starttime) as starttime
+FROM cd.members mem
+INNER JOIN cd.bookings book
+	ON book.memid = mem.memid
+WHERE starttime > '2012-09-01'
+GROUP BY mem.memid
+ORDER BY mem.memid;
