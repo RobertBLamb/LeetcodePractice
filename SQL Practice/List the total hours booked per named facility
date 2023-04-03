@@ -1,0 +1,6 @@
+SELECT fac.facid, fac.name, trim(to_char(sum(book.slots) / 2.0, '9999999999999999D99')) as "Total Hours"
+FROM cd.bookings book
+INNER JOIN cd.facilities fac
+	ON book.facid = fac.facid
+GROUP BY fac.facid, fac.name
+ORDER BY fac.facid ASC;
