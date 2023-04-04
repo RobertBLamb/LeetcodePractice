@@ -1,0 +1,10 @@
+SELECT facid, total 
+FROM 
+	(SELECT facid, SUM(slots) as total, 
+	 		RANK() OVER (
+			  	ORDER BY sum(slots) desc
+			) rank
+	 FROM cd.bookings
+	 GROUP BY facid
+	) as ranked
+WHERE rank = 1   
