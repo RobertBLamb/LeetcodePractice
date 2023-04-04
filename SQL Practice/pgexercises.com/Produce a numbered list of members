@@ -1,0 +1,5 @@
+SELECT ROW_NUMBER() OVER (
+  	ORDER BY memid
+  ) as row_number,
+  firstname, surname
+FROM cd.members
