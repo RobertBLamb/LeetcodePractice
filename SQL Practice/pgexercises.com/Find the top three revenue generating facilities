@@ -1,0 +1,14 @@
+SELECT name, rank
+FROM (
+	SELECT fac.name,
+  		RANK () OVER (ORDER BY SUM(CASE
+  			WHEN book.memid = 0 THEN book.slots * fac.guestcost
+  			ELSE book.slots * fac.membercost
+  		END)DESC)
+	FROM cd.bookings book
+  	INNER JOIN cd.facilities fac
+  		ON fac.facid = book.facid
+  	GROUP BY fac.name
+  	) as subquery
+WHERE rank < 4
+ORDER BY rank;
