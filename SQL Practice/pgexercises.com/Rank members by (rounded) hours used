@@ -1,0 +1,11 @@
+SELECT firstname, surname, hours, RANK() OVER (ORDER BY hours DESC) 
+FROM	
+	(SELECT firstname, surname,
+			((SUM(book.slots)+10)/20)*10 as hours
+	
+	 FROM cd.bookings book
+	 INNER JOIN cd.members mem
+		ON book.memid = mem.memid
+	 GROUP BY mem.memid
+	 ) as subq
+ORDER BY rank, surname, firstname;
