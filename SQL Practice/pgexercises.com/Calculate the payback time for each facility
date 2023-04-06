@@ -1,0 +1,12 @@
+SELECT facs.name,
+	facs.initialoutlay / ((SUM(
+		CASE
+			WHEN book.memid = 0 THEN slots * facs.guestcost
+			ELSE book.slots * facs.membercost
+		END)
+		/3) - facs.monthlymaintenance) as months
+FROM cd.bookings book
+INNER JOIN cd.facilities facs
+	ON book.facid = facs.facid
+GROUP BY facs.facid
+ORDER BY name;     
