@@ -1,0 +1,21 @@
+SELECT name, 
+	CASE 
+		WHEN income = 1 THEN 'high'
+		WHEN income = 2 THEN 'average'
+		ELSE 'low'
+	END AS revenue
+FROM (
+	SELECT fac.name, 
+  		NTILE(3) OVER (
+		  	ORDER BY SUM (
+			  	CASE 
+			  		WHEN book.memid = 0 THEN book.slots * fac.guestcost
+			  		ELSE book.slots * fac.membercost
+			  	END
+		  ) DESC ) AS income
+  	FROM cd.facilities fac
+  	INNER JOIN cd.bookings book
+  		ON book.facid = fac.facid
+  	GROUP BY fac.facid) as subq
+ORDER BY income, name
+	
