@@ -1,0 +1,6 @@
+SELECT us.name, SUM(tr.amount) as BALANCE
+FROM Users us
+INNER JOIN Transactions tr
+  ON tr.account = us.account
+GROUP BY us.name
+HAVING BALANCE > 10000;
