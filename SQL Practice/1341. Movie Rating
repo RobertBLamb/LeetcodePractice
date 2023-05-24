@@ -1,0 +1,23 @@
+# Write your MySQL query statement below
+SELECT results FROM
+(
+    SELECT COUNT(MR.user_id) seen, U.name as results
+    FROM MovieRating MR
+    INNER JOIN Users U
+        ON U.user_id = MR.user_id
+    GROUP BY MR.user_id
+    ORDER BY seen DESC, results ASC
+    LIMIT 1
+) UserQuery
+UNION ALL
+SELECT results FROM
+(
+    SELECT M.title as results, AVG(MR.rating) as score
+    FROM MovieRating MR
+    INNER JOIN Movies M
+        ON M.movie_id = MR.movie_id
+    WHERE MR.created_at BETWEEN '2020/02/01' and '2020/02/29'
+    GROUP BY MR.movie_id
+    ORDER BY score DESC, results ASC
+    LIMIT 1
+) ScoreQuery
