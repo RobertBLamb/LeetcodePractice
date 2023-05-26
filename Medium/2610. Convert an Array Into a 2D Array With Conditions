@@ -1,0 +1,19 @@
+class Solution(object):
+    def findMatrix(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[List[int]]
+        """
+        # ok so my assumption was wrong
+        
+        ans =[[]]
+        count = {}
+        for num in nums:
+            count[num] = count.get(num, 0) + 1
+            if count[num] > len(ans):
+                ans.append([])
+                ans[-1].append(num)
+            else:
+                ans[count[num] - 1].append(num)
+        
+        return ans
