@@ -1,0 +1,15 @@
+class Solution(object):
+    def makeSmallestPalindrome(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        ans = list(s)
+        size = len(s)
+        for i in range(size/ 2):
+            if ans[i] < ans[size - i - 1]:
+                ans[size - i - 1] = ans[i]
+            elif ans[i] > ans[size - i - 1]:
+                ans[i] = ans[size - i - 1]
+        
+        return ''.join(ans)
