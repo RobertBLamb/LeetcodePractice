@@ -1,0 +1,18 @@
+class Solution(object):
+    def findNonMinOrMax(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+
+        seen = set()
+
+        for num in nums:
+            seen.add(num)
+        
+        if len(seen) > 2:
+            seen.remove(max(seen))
+            seen.remove(min(seen))
+
+            return seen.pop()
+        return -1
