@@ -1,0 +1,16 @@
+class Solution(object):
+    def differenceOfSum(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        wholeSum = 0
+        partSum = 0
+
+        for num in nums:
+            wholeSum += num
+
+            for digit in str(num):
+                partSum += int(digit)
+
+        return abs(wholeSum - partSum)
