@@ -1,0 +1,21 @@
+class Solution(object):
+    def cellsInRange(self, s):
+        """
+        :type s: str
+        :rtype: List[str]
+        """
+        intStart = int(s[1])
+        intEnd = int(s[4]) + 1
+
+        charStart = ord(s[0])
+        charEnd = ord(s[3]) + 1
+    
+        ans = []
+
+        for i in range(charStart, charEnd):
+
+            curChar = chr(i)
+            for j in range(intStart, intEnd):
+                ans.append(curChar + str(j))
+
+        return ans
