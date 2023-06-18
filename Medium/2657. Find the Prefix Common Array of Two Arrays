@@ -1,0 +1,19 @@
+class Solution(object):
+    def findThePrefixCommonArray(self, A, B):
+        """
+        :type A: List[int]
+        :type B: List[int]
+        :rtype: List[int]
+        """
+
+        setA = set()
+        setB = set()
+
+        ans = []
+
+        for i in range(len(A)):
+            setA.add(A[i])
+            setB.add(B[i])
+            ans.append(len(setA.intersection(setB)))
+        
+        return ans
