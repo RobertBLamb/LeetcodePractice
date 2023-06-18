@@ -18,3 +18,25 @@ class Solution(object):
             even.insert((2 * i) + 1, odd[i])
         
         return even
+
+class Solution(object):
+    def rearrangeArray(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[int]
+        """
+
+        ans = [None] * len(nums)
+
+        even = 0
+        odd = 1
+
+        for num in nums:
+            if num < 0:
+                ans[odd] = num
+                odd += 2
+            else:
+                ans[even] = num
+                even += 2
+        
+        return ans
