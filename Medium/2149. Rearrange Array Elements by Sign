@@ -1,0 +1,20 @@
+class Solution(object):
+    def rearrangeArray(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[int]
+        """
+
+        even = []
+        odd = []
+
+        for num in nums:
+            if num < 0:
+                odd.append(num)
+            else:
+                even.append(num)
+        
+        for i in range(len(odd)):
+            even.insert((2 * i) + 1, odd[i])
+        
+        return even
