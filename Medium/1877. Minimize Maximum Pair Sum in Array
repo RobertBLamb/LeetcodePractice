@@ -1,0 +1,14 @@
+class Solution(object):
+    def minPairSum(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        nums = sorted(nums)
+        ans = -1
+
+        for i in range(len(nums) / 2):
+            ans = max(ans, nums[i] + nums[len(nums) - i - 1])
+
+        return ans
+        
