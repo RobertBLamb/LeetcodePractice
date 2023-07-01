@@ -1,0 +1,16 @@
+class Solution(object):
+    def maximumNumberOfStringPairs(self, words):
+        """
+        :type words: List[str]
+        :rtype: int
+        """
+
+        ans = 0
+
+        reverse = set()
+
+        for word in words:
+            if word[::-1] in reverse:
+                ans += 1
+            reverse.add(word)
+        return ans
