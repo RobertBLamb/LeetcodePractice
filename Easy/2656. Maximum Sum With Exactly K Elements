@@ -1,0 +1,15 @@
+class Solution(object):
+    def maximizeSum(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: int
+        """
+
+        ans = 0
+        big = max(nums)
+
+        for _ in range(k):
+            ans += big
+            big += 1
+        return ans
