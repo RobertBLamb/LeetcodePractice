@@ -1,0 +1,13 @@
+class Solution(object):
+    def isSameAfterReversals(self, num):
+        """
+        :type num: int
+        :rtype: bool
+        """
+
+        if num < 10:
+            return True
+
+        num = str(num)
+
+        return num[-1] != '0'
