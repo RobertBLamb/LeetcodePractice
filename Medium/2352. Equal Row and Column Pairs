@@ -1,0 +1,23 @@
+class Solution(object):
+    def equalPairs(self, grid):
+        """
+        :type grid: List[List[int]]
+        :rtype: int
+        """
+        rows = {}
+        cols = {}
+        ans = 0
+
+        for r in grid:
+            row = tuple(r)
+            rows[row] = rows.get(row, 0 ) + 1
+
+        for c in zip(*grid):
+            col = tuple(c)
+            cols[col] = cols.get(col, 0 ) + 1
+        
+        for key, val in rows.items():
+            if key in cols:
+                ans += val * cols[key]
+
+        return ans
