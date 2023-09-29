@@ -1,0 +1,21 @@
+class Solution(object):
+    def countPairs(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: int
+        """
+
+        ans = 0    
+        nums.sort()
+
+        for left in range(len(nums) - 1):
+
+            for right in range (left + 1, len(nums)):
+                if nums[left] + nums[right] < target:
+                    ans += 1
+                else:
+                    break
+
+
+        return ans
