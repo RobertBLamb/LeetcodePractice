@@ -1,0 +1,17 @@
+class Solution(object):
+    def numberOfEmployeesWhoMetTarget(self, hours, target):
+        """
+        :type hours: List[int]
+        :type target: int
+        :rtype: int
+        """
+        ans = 0
+
+        hours.sort(reverse = True)
+        for num in hours:
+            if num >= target:
+                ans += 1
+            else:
+                break
+
+        return ans
