@@ -1,0 +1,17 @@
+class Solution(object):
+    def countNegatives(self, grid):
+        """
+        :type grid: List[List[int]]
+        :rtype: int
+        """
+        size = len(grid[0])
+        right = size - 1
+        ans = 0
+
+        for i in range(len(grid)):
+            while right >= 0 and grid[i][right] < 0:
+                right -= 1
+
+            ans += size - (right + 1)
+            
+        return ans
