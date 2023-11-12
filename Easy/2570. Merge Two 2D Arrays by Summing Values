@@ -1,0 +1,16 @@
+class Solution:
+    def mergeArrays(self, nums1: List[List[int]], nums2: List[List[int]]) -> List[List[int]]:
+        
+        d = {}
+
+        for index, val in nums1:
+            d[index] = d.get(index, 0) + val
+        for index, val in nums2:
+            d[index] = d.get(index, 0) + val
+        
+        ans = []
+
+        for key in sorted(d):
+            ans.append([key, d[key]])
+
+        return ans
